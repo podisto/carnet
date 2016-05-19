@@ -1,0 +1,29 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <h1>Ajouter un contact</h1>
+        <form action="{{ path('carnet_new') }}" method="post">
+            <div class="form-group">
+                {{ form_row(form.name) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.address) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.email) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.phone) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.website) }}
+            </div>
+            {{ form_rest(form) }}
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Ajouter" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,4 @@
+services:
+#    carnet.example:
+#        class: App\CarnetBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

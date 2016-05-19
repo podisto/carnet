@@ -1,0 +1,46 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="col-md-5 col-md-offset-3">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title text text-center">Creer un compte</h3>
+        </div>
+        <div class="panel-body">
+            <form method="post" {{ form_enctype(form) }} action="{{ path('fos_user_registration_register') }}" class="fos_user_registration_register">
+                <fieldset class="form-group">
+                    {{ form_label(form.username, "Nom d'utilisateur", {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.username) }}
+                </fieldset>
+                <fieldset class="form-group">
+                    {{ form_label(form.email) }}
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.email) }}
+                </fieldset>
+                <fieldset class="form-group">
+                    {{ form_label(form.plainPassword.first) }}
+                    {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.plainPassword.first) }}
+                </fieldset>
+                <fieldset class="form-group">
+                    {{ form_label(form.plainPassword.second) }}
+                    {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.plainPassword.second) }}
+                </fieldset>
+                <fieldset class="form-group">
+                    {{ form_rest(form) }}
+                    <input type="submit" class="col-lg-12 btn btn-success btn-lg" value="{{ 'registration.submit'|trans }}" />
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{#{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {{ form_widget(form) }}
+    <div>
+
+    </div>
+{{ form_end(form) }}#}
