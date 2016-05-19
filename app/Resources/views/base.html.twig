@@ -17,8 +17,8 @@
                 <h1>Repository</h1>
                 <p>Votre carnet d'adresse en ligne ou que vous soyez !!!</p>
                 <p>
-                    <a class="btn btn-primary btn-lg" href="{{ path('carnet_new') }}" role="button">Add contact</a>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a class="btn btn-primary btn-lg" href="{{ path('carnet_new') }}" role="button">Add contact</a>
                         <a class="btn btn-danger btn-lg" href="{{ path('fos_user_security_logout') }}" role="button">Logout</a>
                     {% endif %}
                 </p>

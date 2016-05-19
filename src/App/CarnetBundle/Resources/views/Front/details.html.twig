@@ -4,6 +4,9 @@
    <div class="container">
        <div class="row">
            <div class="col-md-9">
+               {% for message in app.session.flashbag.get('success') %}
+                   <div class="alert alert-success">{{ message }}</div>
+               {% endfor %}
                <div class="panel panel-success">
                    <div class="panel-heading">
                        <h3 class="panel-title">Name</h3>
@@ -29,6 +32,17 @@
                            <tr>
                                <td>Website link</td>
                                <td><a href="{{ contact.website }}" target="_blank">{{ contact.website }}</a></td>
+                           </tr>
+                           <tr>
+                               <td></td>
+                               <td>
+                                   <a href="{{ path('carnet_edit', { id: contact.id }) }}" class="btn btn-warning">
+                                       Editer <i class="glyphicon glyphicon-edit"></i>
+                                   </a>
+                                   <a href="#" class="btn btn-danger">
+                                       Supprimer <i class="glyphicon glyphicon-trash"></i>
+                                   </a>
+                               </td>
                            </tr>
                        </table>
                    </div>

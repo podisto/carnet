@@ -6,10 +6,16 @@ carnet_new:
     path:    /add
     defaults: { _controller: CarnetBundle:Carnet:add }
 
+carnet_edit:
+    path:    /edit/{id}
+    defaults: { _controller: CarnetBundle:Carnet:edit }
+    requirements:
+        id: \d+
+
 carnet_detail:
     path:    /voir/{id}
     defaults: { _controller: CarnetBundle:Carnet:show }
 
 carnet_all:
     path:   /all
-    defaults: { _controller: CarnetBundle:Carnet:userContact }
+    defaults: { _controller: CarnetBundle:Carnet:index }

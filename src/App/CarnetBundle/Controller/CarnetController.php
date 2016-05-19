@@ -17,10 +17,6 @@ use Symfony\Component\HttpFoundation\Request;
 class CarnetController extends Controller
 {
     public function indexAction() {
-        return $this->render('CarnetBundle:Front:index.html.twig');
-    }
-
-    public function userContactAction() {
         // get all user's contact
         $user = $this->getUser();
         if(null === $user)
@@ -29,7 +25,7 @@ class CarnetController extends Controller
         $em = $this->getDoctrine()->getManager();
         $contacts = $em->getRepository('CarnetBundle:Contact')->getUserContact($user);
 
-        return $this->render('@Carnet/Front/contacts.html.twig', array('contacts' => $contacts));
+        return $this->render('CarnetBundle:Front:index.html.twig', array('contacts' => $contacts));
     }
 
     public function addAction(Request $request) {
@@ -60,7 +56,20 @@ class CarnetController extends Controller
     }
 
     public function editAction(Request $request, Contact $contact) {
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->createForm(new ContactType(), $contact);
 
+        if("POST" === $request->getMethod()) {
+            if($form->handleRequest($request)->isValid()) {
+                $em->flush();
+                $this->get('session')->getFlashBag()->add('success', 'Contact modifié !');
+                return $this->redirect($this->generateUrl('carnet_detail', array('id' => $contact->getId())));
+            }
+        }
+        return $this->render('@Carnet/Front/edit.html.twig', array(
+            'form' => $form->createView(),
+            'contact' => $contact
+        ));
     }
 
     public function showAction($id) {

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-9">
                 <h1>Ajouter un contact</h1>
-                <form action="{{ path('carnet_new') }}" method="post">
+                <form action="{{ path('carnet_edit', { 'id' : contact.id }) }}" method="post">
                     <div class="form-group">
                         {{ form_row(form.name) }}
                     </div>
@@ -24,7 +24,7 @@
                     {{ form_rest(form) }}
                     <br>
                     <div class="form-group">
-                        <input type="submit" value="Ajouter" class="btn btn-primary">
+                        <input type="submit" value="Modifier" class="btn btn-warning">
                     </div>
                 </form>
             </div>

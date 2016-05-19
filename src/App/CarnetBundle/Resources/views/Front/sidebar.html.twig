@@ -4,14 +4,14 @@
             Gestions carnet
         </a>
         <a href="#" class="list-group-item">Ajouter nouveau</a>
-        <a href="{{ path('carnet_all') }}" class="list-group-item">Tous mes contacts</a>
+        <a href="{{ path('carnet_homepage') }}" class="list-group-item">Tous mes contacts</a>
     </div>
 
     <div class="list-group">
         <a class="list-group-item active">
-            Mon compte
+            Salut {{ app.user.username }}
         </a>
-        <a href="#" class="list-group-item">Mes informations</a>
-        <a href="#" class="list-group-item">Deconnexion</a>
+        <a href="{{ path('fos_user_profile_show') }}" class="list-group-item">Mes informations</a>
+        <a href="{{ path('fos_user_security_logout') }}" class="list-group-item">Deconnexion</a>
     </div>
 </div>
