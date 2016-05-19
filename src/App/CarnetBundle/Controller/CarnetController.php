@@ -79,7 +79,13 @@ class CarnetController extends Controller
         return $this->render('@Carnet/Front/details.html.twig', array('contact' => $contact));
     }
 
-    public function deleteAction(Request $request) {
+    public function deleteAction(Contact $contact) {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($contact);
+        $em->flush();
 
+        $this->get('session')->getFlashBag()->add('success', 'Contact supprime.');
+        //
+        return $this->redirect($this->generateUrl('carnet_homepage'));
     }
 }
